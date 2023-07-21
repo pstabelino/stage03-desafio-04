@@ -1,0 +1,258 @@
+/* font-family: 'Palanquin', sans-serif;
+font-family: 'Staatliches', cursive; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-heading: "Staatliches", cursive;
+  --ff-texting: "Palanquin", sans-serif;
+
+  --blue: #4a4e69;
+  --grey: #8e9aaf;
+  --pink-100: #cbc0d3;
+  --pink-200: #feeafa;
+  --lavender: #eff1ff;
+
+  font-size: 62.5%;
+}
+
+.page {
+  max-width: 38.4rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "A"
+    "B"
+    "C";
+}
+
+header {
+  grid-area: A;
+}
+
+.texting {
+  grid-area: B;
+}
+
+main .items {
+  grid-area: C;
+}
+
+header {
+  background: var(--grey);
+  text-align: center;
+  padding-bottom: 3.6rem;
+}
+
+header img {
+  width: 16rem;
+  margin-top: 3.2rem;
+}
+
+header h1 {
+  color: #fff;
+  text-shadow: 0px 2px 5px rgb(0, 0, 0, 0.25);
+  font-family: var(--ff-heading);
+  font-size: 4rem;
+  line-height: 3.4rem;
+  letter-spacing: 0.2rem;
+  background: var(--pink-100);
+  padding: 0.8rem 0 0.8rem 0;
+  margin-top: 4rem;
+}
+
+.texting {
+  font-family: var(--ff-texting);
+  color: var(--blue);
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  background: var(--lavender);
+  padding: 3rem 4rem;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  background: var(--lavender);
+  padding-bottom: 3rem;
+  padding-top: 2rem;
+}
+
+.card {
+  position: relative;
+  animation: downtop 1s forwards;
+}
+
+/* a argumento all refere-se as duas propriedades declaradas no .card img:hover */
+.card img {
+  transition: all 200ms;
+  width: 100%;
+}
+
+.card img:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+.card h2 {
+  position: absolute;
+  top: 1.7rem;
+  right: 1.7rem;
+  font-family: var(--ff-heading);
+  color: var(--blue);
+  font-size: 2rem;
+  line-height: 4rem;
+  letter-spacing: 0.1rem;
+
+  background: var(--pink-200);
+  border-radius: 2rem;
+  padding: 0 2rem 0 2.4rem;
+
+  animation: topdown 1.1s 600ms backwards;
+}
+
+main .card:nth-child(5),
+main .card:nth-child(6),
+footer {
+  display: none;
+}
+
+footer {
+  text-align: center;
+  font-family: var(--ff-texting);
+  font-size: 1.2rem;
+  color: var(--blue);
+  background: var(--lavender);
+  padding: 1rem 0 4rem 0;
+}
+
+footer p span {
+  font-weight: 600;
+}
+
+@keyframes topdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+}
+
+@media (min-width: 1120px) {
+  .page {
+    max-width: 128rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+      "A C C C"
+      "B C C C"
+      "B C C C"
+      "B D D D";
+
+    height: 100vh;
+  }
+
+  header {
+    grid-area: A;
+  }
+
+  .texting {
+    grid-area: B;
+  }
+
+  main {
+    grid-area: C;
+    display: flex;
+    padding: 5rem;
+    align-items: center;
+  }
+
+  footer {
+    grid-area: D;
+    align-self: end;
+    padding: 4rem 0 4rem 0;
+    background: #fff;
+  }
+
+  main .card:nth-child(5),
+  main .card:nth-child(6),
+  footer {
+    display: unset;
+  }
+
+  .texting {
+    background: var(--grey);
+    color: #fff;
+  }
+
+  .items {
+    width: 100%;
+    height: 96%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "A C E"
+      "B C F"
+      "B D F";
+
+    background: #fff;
+    align-items: start;
+  }
+
+  .items .card:nth-child(1) {
+    grid-area: A;
+  }
+
+  .items .card:nth-child(2) {
+    grid-area: B;
+  }
+
+  .items .card:nth-child(4) {
+    grid-area: C;
+  }
+
+  .items .card:nth-child(3) {
+    grid-area: D;
+  }
+
+  .items .card:nth-child(5) {
+    grid-area: E;
+  }
+
+  .items .card:nth-child(6) {
+    grid-area: F;
+  }
+
+  .card h2 {
+    font-size: 1.6rem;
+    line-height: 3.6rem;
+
+    padding: 0 1.8rem 0 2.2rem;
+  }
+}
